@@ -176,8 +176,7 @@ function loop(now){
   const sl=(q.y-p.y)/Math.max(.5,q.x-p.x);
   const baseV = inL ? 26 : s < 6 ? 7 : Math.max(8, Math.min(46, 24 - sl * 24));
   const v = Math.min(69, baseV * (sl < -0.2 && !inL ? 1.5 : 1.2));
-
-
+  s = Math.min(T.len - 1, s + v * dt);
   pitch+=(at(T,s+2).th-pitch)*Math.min(1,dt*5);
   const ni=evIdx+1;
   if(ni<cur.events.length&&s>=T.nodeA[ni+1]-1){evIdx=ni;showEv(cur.events[ni])}
